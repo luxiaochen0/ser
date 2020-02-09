@@ -13,15 +13,26 @@ services:
       - ../:/code
       - ./nginx/logs:/var/log/nginx
 
-  php:
+  php7.0:
     build:
       context: ./php
-      dockerfile: dockerfile-php
+      dockerfile: dockerfile-php7.0
     container_name: php
     networks:
       - network1
     volumes:
       - ../:/code
+
+  php7.4:
+    build:
+      context: ./php
+      dockerfile: dockerfile-php7.4
+    container_name: php
+    networks:
+      - network1
+    volumes:
+      - ../:/code
+
   mysql:
     build:
       context: ./mysql
