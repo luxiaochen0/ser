@@ -4,7 +4,6 @@ services:
     build:
       context: ./nginx
       dockerfile: dockerfile-nginx
-    container_name: nginx
     ports:
       - '80:80'
     networks:
@@ -12,32 +11,26 @@ services:
     volumes:
       - ../:/code
       - ./nginx/logs:/var/log/nginx
-
   php7.0:
     build:
       context: ./php
       dockerfile: dockerfile-php7.0
-    container_name: php7.0
     networks:
       - network1
     volumes:
       - ../:/code
-
   php7.4:
     build:
       context: ./php
       dockerfile: dockerfile-php7.4
-    container_name: php7.4
     networks:
       - network1
     volumes:
       - ../:/code
-
   mysql:
     build:
       context: ./mysql
       dockerfile: dockerfile-mysql
-    container_name: mysql
     ports:
       - '3306:3306'
     networks:
@@ -48,13 +41,11 @@ services:
       - ./mysql/data:/var/lib/mysql
   memcached:
     image: memcached:1.5
-    container_name: memcached
-    ports:
-      - '11211:11211'
+#    ports:
+#      - '11211:11211'
     networks:
       - network1
 
 networks:
   network1:
     driver: bridge
-    name: network1
