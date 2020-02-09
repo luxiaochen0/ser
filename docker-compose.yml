@@ -1,0 +1,49 @@
+version: '3.7'
+services:
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: dockerfile-nginx
+    container_name: nginx
+    ports:
+      - '80:80'
+    networks:
+      - network1
+    volumes:
+      - ../:/code
+      - ./nginx/logs:/var/log/nginx
+
+  php:
+    build:
+      context: ./php
+      dockerfile: dockerfile-php
+    container_name: php
+    networks:
+      - network1
+    volumes:
+      - ../:/code
+  mysql:
+    build:
+      context: ./mysql
+      dockerfile: dockerfile-mysql
+    container_name: mysql
+    ports:
+      - '3306:3306'
+    networks:
+      - network1
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+    volumes:
+      - ./mysql/data:/var/lib/mysql
+  memcached:
+    image: memcached:1.5
+    container_name: memcached
+    ports:
+      - '11211:11211'
+    networks:
+      - network1
+
+networks:
+  network1:
+    driver: bridge
+    name: network1
