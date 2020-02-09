@@ -17,7 +17,7 @@ services:
     build:
       context: ./php
       dockerfile: dockerfile-php7.0
-    container_name: php
+    container_name: php7.0
     networks:
       - network1
     volumes:
@@ -27,7 +27,7 @@ services:
     build:
       context: ./php
       dockerfile: dockerfile-php7.4
-    container_name: php
+    container_name: php7.4
     networks:
       - network1
     volumes:
