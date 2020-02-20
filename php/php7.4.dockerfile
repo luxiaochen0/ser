@@ -1,5 +1,8 @@
 FROM php:7.4-fpm
 
+#复制php配置文件
+RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
+
 #apt-get的加速镜像
 COPY debian10-sources.list /etc/apt/sources.list
 

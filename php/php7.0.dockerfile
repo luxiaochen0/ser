@@ -1,5 +1,8 @@
 FROM php:7.0-fpm
 
+#复制php配置文件
+RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
+
 #apt-get的加速镜像
 COPY debian9-sources.list /etc/apt/sources.list
 
