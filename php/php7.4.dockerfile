@@ -1,7 +1,7 @@
 FROM php:7.4-fpm
 
 #复制php配置文件
-RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
+RUN mv $PHP_INI_DIR/php.ini-production $PHP_INI_DIR/php.ini
 
 #apt-get的加速镜像
 COPY debian10-sources.list /etc/apt/sources.list
@@ -29,6 +29,7 @@ RUN pecl install memcache-4.0.5.2 \
 #安装xdebug
 RUN pecl install xdebug-2.9.2 \
     && docker-php-ext-enable xdebug
-#复制xdebug配置文件
-COPY ./conf.d/* /usr/local/etc/php/conf.d
+
+#复制自定义的xdebug和其他的配置文件
+COPY ./conf.d/* /usr/local/etc/php/conf.d/
 
