@@ -39,7 +39,7 @@ services:
     volumes:
       - ./mysql/data:/var/lib/mysql
   memcached:
-    image: memcached:1.5
+    image: memcached:1.5.22
 #    ports:
 #      - '11211:11211'
     networks:
