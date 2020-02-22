@@ -1,6 +1,7 @@
 version: '3'
 services:
   nginx:
+    image: docker-dev-nginx:1.0.0
     build:
       context: ./nginx
       dockerfile: nginx.dockerfile
@@ -25,6 +26,7 @@ services:
     volumes:
       - ../:/code
   mysql:
+    image: docker-dev-mysql:1.0.0
     build:
       context: ./mysql
       dockerfile: mysql.dockerfile
