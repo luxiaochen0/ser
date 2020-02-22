@@ -1,6 +1,6 @@
 @ECHO off
 set/p ipv4=192.168.1.
-set trueipv4=192.168.1.%ip%
+set trueipv4=192.168.1.%ipv4%
 set/p ipv6=input ipv6
 
 aliyun alidns UpdateDomainRecord --RecordId 19123530803843072 --RR hzwf-manager --Type A --Value %trueipv4% --Line default
