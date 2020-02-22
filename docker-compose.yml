@@ -1,4 +1,4 @@
-version: '3.7'
+version: '3'
 services:
   nginx:
     build:
@@ -13,17 +13,13 @@ services:
       - ../:/code
       - ./nginx/logs:/var/log/nginx
   php7.0:
-    build:
-      context: ./php
-      dockerfile: php7.0.dockerfile
+    image: registry.cn-shanghai.aliyuncs.com/luxiaochen/docker-dev-php7.0:1.0.0
     networks:
       - network1
     volumes:
       - ../:/code
   php7.4:
-    build:
-      context: ./php
-      dockerfile: php7.4.dockerfile
+    image: registry.cn-shanghai.aliyuncs.com/luxiaochen/docker-dev-php7.4:1.0.0
     networks:
       - network1
     volumes:
@@ -47,7 +43,7 @@ services:
     networks:
       - network1
   redis:
-    image: redis:5.0
+    image: redis:5.0.7
     ports:
       - '6379:6379'
     networks:
