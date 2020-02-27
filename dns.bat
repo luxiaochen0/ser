@@ -7,8 +7,12 @@ aliyun alidns UpdateDomainRecord --RecordId 19123530803843072 --RR hzwf-manager 
 ::aliyun alidns UpdateDomainRecord --RecordId 19238100006797312 --RR hzwf-manager --Type AAAA --Value %ipv6% --Line default
 aliyun alidns UpdateDomainRecord --RecordId 19123601903715328 --RR hzwf-wx --Type A --Value %trueipv4% --Line default
 ::aliyun alidns UpdateDomainRecord --RecordId 19238100867903488 --RR hzwf-wx --Type AAAA --Value %ipv6% --Line default
+aliyun alidns UpdateDomainRecord --RecordId 19264359287097344 --RR hzwf-ent --Type A --Value %trueipv4% --Line default
+
 aliyun alidns UpdateDomainRecord --RecordId 19196542328179712 --RR next-superhero --Type A --Value %trueipv4% --Line default
 aliyun alidns UpdateDomainRecord --RecordId 19196990950567936 --RR next-superhero-api --Type A --Value %trueipv4% --Line default
+
+
 
 ::aliyun alidns DescribeSubDomainRecords  --SubDomain hzwf-manager.luxiaochen.com
 
