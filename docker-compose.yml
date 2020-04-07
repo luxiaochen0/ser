@@ -38,7 +38,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: 123456
     volumes:
-      - ./mysql/data:/var/lib/mysql
+      - mysql_data:/var/lib/mysql
   memcached:
     image: memcached:1.5.22
 #    ports:
@@ -60,3 +60,5 @@ services:
 networks:
   network1:
     driver: bridge
+volumes:
+  mysql_data:
