@@ -15,17 +15,21 @@ services:
       - ../:/code
       - ./nginx/logs:/var/log/nginx
   php7.0:
-    image: registry.cn-shanghai.aliyuncs.com/luxiaochen/docker-dev-php7.0:1.0.1
+    image: registry.cn-shanghai.aliyuncs.com/luxiaochen/docker-dev-php7.0:1.0.4
     networks:
       - network1
     volumes:
       - ../:/code
+    environment:
+      - XDEBUG_REMOTE_HOST=192.168.1.14
   php7.4:
-    image: registry.cn-shanghai.aliyuncs.com/luxiaochen/docker-dev-php7.4:1.0.1
+    image: registry.cn-shanghai.aliyuncs.com/luxiaochen/docker-dev-php7.4:1.0.4
     networks:
       - network1
     volumes:
       - ../:/code
+    environment:
+      - XDEBUG_REMOTE_HOST=192.168.1.14
   mysql:
     image: docker-dev-mysql:1.0.0
     build:
