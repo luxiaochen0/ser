@@ -14,6 +14,8 @@ services:
     volumes:
       - ../:/code
       - ./nginx/logs:/var/log/nginx
+    environment:
+      - TZ=Asia/Shanghai
   php7.0:
     image: registry.cn-shanghai.aliyuncs.com/luxiaochen/docker-dev-php7.0:1.0.4
     networks:
@@ -40,7 +42,7 @@ services:
     networks:
       - network1
     environment:
-      MYSQL_ROOT_PASSWORD: 123456
+      - MYSQL_ROOT_PASSWORD=123456
     volumes:
       - mysql5_data:/var/lib/mysql
   mysql8.0:
@@ -53,7 +55,7 @@ services:
     networks:
       - network1
     environment:
-      MYSQL_ROOT_PASSWORD: 123456
+      - MYSQL_ROOT_PASSWORD=123456
     volumes:
       - mysql8_data:/var/lib/mysql
   memcached:
