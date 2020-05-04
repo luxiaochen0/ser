@@ -30,11 +30,24 @@ services:
       - ../:/code
     environment:
       - XDEBUG_REMOTE_HOST=192.168.1.14
-  mysql:
-    image: docker-dev-mysql:1.0.0
+  mysql5.7:
+    image: docker-dev-mysql5.7:1.0.0
     build:
       context: ./mysql
-      dockerfile: mysql.dockerfile
+      dockerfile: mysql5.7.dockerfile
+    ports:
+      - '3307:3306'
+    networks:
+      - network1
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+    volumes:
+      - mysql5_data:/var/lib/mysql
+  mysql8.0:
+    image: docker-dev-mysql8.0:1.0.0
+    build:
+      context: ./mysql
+      dockerfile: mysql8.0.dockerfile
     ports:
       - '3306:3306'
     networks:
@@ -42,19 +55,21 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: 123456
     volumes:
-      - mysql_data:/var/lib/mysql
+      - mysql8_data:/var/lib/mysql
   memcached:
-    image: memcached:1.5.22
+    image: memcached:1.6.5
 #    ports:
 #      - '11211:11211'
     networks:
       - network1
   redis:
-    image: redis:5.0.7
+    image: redis:6.0.1
     ports:
       - '6379:6379'
     networks:
       - network1
+    volumes:
+      - redis_data:/data
   tomcat:
     image: tomcat:9.0.31-jdk13-openjdk-oracle
     ports:
@@ -65,4 +80,6 @@ networks:
   network1:
     driver: bridge
 volumes:
-  mysql_data:
+  mysql5_data:
+  mysql8_data:
+  redis_data:
