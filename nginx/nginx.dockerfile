@@ -1,4 +1,4 @@
-FROM nginx:1.17.8
+FROM nginx:1.17.10
 
 COPY ./conf.d/* /etc/nginx/conf.d/
 COPY ./certs/* /etc/nginx/certs/
