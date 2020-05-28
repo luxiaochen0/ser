@@ -73,11 +73,13 @@ services:
     volumes:
       - redis_data:/data
   tomcat:
-    image: tomcat:9.0.31-jdk13-openjdk-oracle
+    image: tomcat:9.0.35-jdk8-openjdk
     ports:
       - '8080:8080'
     networks:
       - network1
+    volumes:
+      - /d/code-java:/usr/local/tomcat/webapps
 networks:
   network1:
     driver: bridge
