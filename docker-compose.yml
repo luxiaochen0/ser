@@ -17,7 +17,7 @@ services:
     environment:
       - TZ=Asia/Shanghai
   php7.0:
-    image: registry.cn-shanghai.aliyuncs.com/luxiaochen/docker-dev-php7.0:1.0.4
+    image: registry.cn-shanghai.aliyuncs.com/luxiaochen/docker-dev-php7.0:1.0.5
     networks:
       - network1
     volumes:
