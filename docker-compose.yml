@@ -59,13 +59,13 @@ services:
     volumes:
       - mysql8_data:/var/lib/mysql
   memcached:
-    image: memcached:1.6.5
+    image: memcached:1.6.6
 #    ports:
 #      - '11211:11211'
     networks:
       - network1
   redis:
-    image: redis:6.0.1
+    image: redis:6.0.4
     ports:
       - '6379:6379'
     networks:
