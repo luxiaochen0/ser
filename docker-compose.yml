@@ -72,6 +72,7 @@ services:
       - network1
     volumes:
       - redis_data:/data
+    command: redis-server --requirepass 123456
   tomcat:
     image: tomcat:9.0.35-jdk8-openjdk
     ports:
