@@ -1,7 +1,7 @@
-version: '3'
+version: '3.7'
 services:
   nginx:
-    image: docker-dev-nginx:1.0.0
+    image: ser-nginx:1.0.0
     build:
       context: ./nginx
       dockerfile: nginx.dockerfile
@@ -17,15 +17,22 @@ services:
     environment:
       - TZ=Asia/Shanghai
   php7.0:
-    image: registry.cn-shanghai.aliyuncs.com/luxiaochen/docker-dev-php7.0:1.0.5
+    image: ser-php7.0:1.0.0
+    build:
+      context: ./php7.0
+      dockerfile: Dockerfile
     networks:
       - network1
     volumes:
       - ../:/code
+    working_dir: /code
     environment:
       - XDEBUG_REMOTE_HOST=192.168.1.14
   php7.4:
-    image: registry.cn-shanghai.aliyuncs.com/luxiaochen/docker-dev-php7.4:1.0.6
+    image: ser-php7.4:1.0.0
+    build:
+      context: ./php7.4
+      dockerfile: Dockerfile
     networks:
       - network1
     volumes:
@@ -33,7 +40,7 @@ services:
     environment:
       - XDEBUG_REMOTE_HOST=192.168.1.14
   mysql5.7:
-    image: docker-dev-mysql5.7:1.0.0
+    image: ser-mysql5.7:1.0.0
     build:
       context: ./mysql
       dockerfile: mysql5.7.dockerfile
@@ -46,7 +53,7 @@ services:
     volumes:
       - mysql5_data:/var/lib/mysql
   mysql8.0:
-    image: docker-dev-mysql8.0:1.0.0
+    image: ser-mysql8.0:1.0.0
     build:
       context: ./mysql
       dockerfile: mysql8.0.dockerfile
@@ -86,5 +93,8 @@ networks:
     driver: bridge
 volumes:
   mysql5_data:
+    name: docker-dev_mysql5_data
   mysql8_data:
+    name: mysql8_data
   redis_data:
+    name: redis_data
