@@ -93,7 +93,7 @@ networks:
     driver: bridge
 volumes:
   mysql5_data:
-    name: docker-dev_mysql5_data
+    name: mysql5_data
   mysql8_data:
     name: mysql8_data
   redis_data:
