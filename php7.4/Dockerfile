@@ -17,6 +17,9 @@ RUN apt-get update && apt-get install -y \
 #安装bcmath
 RUN docker-php-ext-install bcmath
 
+#升级pecl
+RUN pecl channel-update pecl.php.net
+
 #安装mcrypt
 RUN apt-get install -y libmcrypt-dev \
     && pecl install mcrypt-1.0.3 \
@@ -25,6 +28,10 @@ RUN apt-get install -y libmcrypt-dev \
 #安装memcahe
 RUN pecl install memcache-4.0.5.2 \
     && docker-php-ext-enable memcache
+
+#安装swoole
+RUN pecl install swoole \
+    && docker-php-ext-enable swoole
 
 #安装xdebug
 RUN pecl install xdebug-2.9.2 \
