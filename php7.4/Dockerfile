@@ -1,4 +1,4 @@
-FROM php:7.4.6-fpm
+FROM php:7.4.12-fpm
 
 #apt-get的加速镜像
 COPY debian10-sources.list /etc/apt/sources.list
@@ -7,26 +7,27 @@ COPY debian10-sources.list /etc/apt/sources.list
 RUN docker-php-ext-install pdo_mysql
 
 #安装gd库
-RUN apt-get update && apt-get install -y \
-        libfreetype6-dev \
-        libjpeg62-turbo-dev \
-        libpng-dev \
+RUN apt-get update && apt-get install -y libfreetype6-dev libjpeg62-turbo-dev libpng-dev\
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd
 
 #安装bcmath
 RUN docker-php-ext-install bcmath
 
+#安装zip
+RUN apt-get install -y libzip-dev\
+    && docker-php-ext-install zip
+
 #升级pecl
 RUN pecl channel-update pecl.php.net
 
 #安装mcrypt
 RUN apt-get install -y libmcrypt-dev \
-    && pecl install mcrypt-1.0.3 \
+    && pecl install mcrypt \
     && docker-php-ext-enable mcrypt
 
 #安装memcahe
-RUN pecl install memcache-4.0.5.2 \
+RUN pecl install memcache \
     && docker-php-ext-enable memcache
 
 #安装swoole
@@ -34,7 +35,7 @@ RUN pecl install swoole \
     && docker-php-ext-enable swoole
 
 #安装xdebug
-RUN pecl install xdebug-2.9.2 \
+RUN pecl install xdebug \
     && docker-php-ext-enable xdebug
 
 #复制php配置文件
