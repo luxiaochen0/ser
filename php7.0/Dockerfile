@@ -28,7 +28,7 @@ RUN docker-php-ext-install zip
 RUN pecl channel-update pecl.php.net
 
 #安装memcahe
-RUN pecl install memcache \
+RUN pecl install memcache-4.0.5.2 \
     && docker-php-ext-enable memcache
 
 #安装xdebug

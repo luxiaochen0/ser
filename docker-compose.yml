@@ -90,6 +90,16 @@ services:
       - network1
     volumes:
       - /d/code-java:/usr/local/tomcat/webapps
+  jupyter:
+    image: jupyter/scipy-notebook:399cbb986c6b
+    ports:
+      - '8888:8888'
+    networks:
+      - network1
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+    volumes:
+      - jupyter_data:/home/jovyan
 networks:
   network1:
     driver: bridge
@@ -100,3 +110,5 @@ volumes:
     name: mysql8_data
   redis_data:
     name: redis_data
+  jupyter_data:
+    name: jupyter_data

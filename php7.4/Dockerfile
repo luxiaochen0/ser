@@ -27,7 +27,7 @@ RUN apt-get install -y libmcrypt-dev \
     && docker-php-ext-enable mcrypt
 
 #安装memcahe
-RUN pecl install memcache \
+RUN pecl install memcache-4.0.5.2 \
     && docker-php-ext-enable memcache
 
 #安装swoole
