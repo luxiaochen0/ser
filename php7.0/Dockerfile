@@ -25,14 +25,17 @@ RUN docker-php-ext-install bcmath
 RUN docker-php-ext-install zip
 
 #升级pecl
-RUN pecl channel-update pecl.php.net
+#RUN pecl channel-update pecl.php.net
+
+#复制pecl模块
+COPY ./file/* /usr/local/src/
 
 #安装memcahe
-RUN pecl install memcache-4.0.5.2 \
+RUN pecl install /usr/local/src/memcache-4.0.5.2.tgz \
     && docker-php-ext-enable memcache
 
 #安装xdebug
-RUN pecl install xdebug-2.6.1 \
+RUN pecl install /usr/local/src/xdebug-2.6.1.tgz \
     && docker-php-ext-enable xdebug
 
 #复制php配置文件

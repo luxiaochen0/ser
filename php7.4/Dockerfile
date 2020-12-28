@@ -19,23 +19,26 @@ RUN apt-get install -y libzip-dev\
     && docker-php-ext-install zip
 
 #升级pecl
-RUN pecl channel-update pecl.php.net
+#RUN pecl channel-update pecl.php.net
+
+#复制pecl模块
+COPY ./file/* /usr/local/src/
 
 #安装mcrypt
 RUN apt-get install -y libmcrypt-dev \
-    && pecl install mcrypt \
+    && pecl install /usr/local/src/mcrypt-1.0.4.tgz \
     && docker-php-ext-enable mcrypt
 
 #安装memcahe
-RUN pecl install memcache-4.0.5.2 \
+RUN pecl install /usr/local/src/memcache-4.0.5.2.tgz \
     && docker-php-ext-enable memcache
 
 #安装swoole
-RUN pecl install swoole \
+RUN pecl install /usr/local/src/swoole-4.5.10.tgz \
     && docker-php-ext-enable swoole
 
 #安装xdebug
-RUN pecl install xdebug \
+RUN pecl install /usr/local/src/xdebug-3.0.1.tgz \
     && docker-php-ext-enable xdebug
 
 #复制php配置文件
