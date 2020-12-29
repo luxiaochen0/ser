@@ -68,13 +68,13 @@ services:
     volumes:
       - mysql8_data:/var/lib/mysql
   memcached:
-    image: memcached:1.6.6
+    image: memcached:1.6.9
 #    ports:
 #      - '11211:11211'
     networks:
       - network1
   redis:
-    image: redis:6.0.4
+    image: redis:6.0.9
     ports:
       - '6379:6379'
     networks:
@@ -83,7 +83,7 @@ services:
       - redis_data:/data
     command: redis-server --requirepass 123456
   tomcat:
-    image: tomcat:9.0.35-jdk8-openjdk
+    image: tomcat:9.0.41-jdk8-openjdk
     ports:
       - '8080:8080'
     networks:

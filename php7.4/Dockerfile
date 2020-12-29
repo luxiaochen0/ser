@@ -1,4 +1,4 @@
-FROM php:7.4.12-fpm
+FROM php:7.4.13-fpm
 
 #apt-get的加速镜像
 COPY debian10-sources.list /etc/apt/sources.list
