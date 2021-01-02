@@ -7,7 +7,6 @@ services:
       dockerfile: nginx.dockerfile
     ports:
       - '80:80'
-      - '81:81'
       - '443:443'
     networks:
       - network1
